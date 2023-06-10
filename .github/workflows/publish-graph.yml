@@ -38,10 +38,20 @@ jobs:
         shell: bash
         run: |
           echo "COMMIT_SHA=\${GITHUB_SHA}" >> \${GITHUB_ENV}
+      - name: Build
+        run: pnpm run build
       - name: Publish
-        run: PUBLISH_GRAPH=true pnpm run start
+        uses: easingthemes/ssh-deploy@v2.0.7
         env:
+          SOURCE: 'dist/'
+          REMOTE_HOST: 114.116.77.31
+          REMOTE_USER: root
+          SSH_PRIVATE_KEY: XCX960328!
           DEVTOOLS_API_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
-          REPOSITORY_NAME: ${{ github.event.repository.name }}
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-          TARGET_SHA: ${{ github.event.pull_request.base.sha }}
+#      - name: Publish
+#        run: PUBLISH_GRAPH=true pnpm run start
+#        env:
+#          DEVTOOLS_API_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
+#          REPOSITORY_NAME: ${{ github.event.repository.name }}
+#          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+#          TARGET_SHA: ${{ github.event.pull_request.base.sha }}
