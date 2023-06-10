@@ -48,6 +48,7 @@ jobs:
           REMOTE_USER: root
           SSH_PRIVATE_KEY: XCX960328!
           DEVTOOLS_API_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
+          TARGET: /home/server
 #      - name: Publish
 #        run: PUBLISH_GRAPH=true pnpm run start
 #        env:
