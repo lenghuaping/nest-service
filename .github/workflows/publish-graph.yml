@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - '*'
-
 jobs:
   publish:
     if: github.actor!= 'dependabot[bot]'
@@ -41,12 +40,12 @@ jobs:
       - name: Build
         run: pnpm run build
       - name: Publish
-        uses: easingthemes/ssh-deploy@v4.1.8
+        uses: easingthemes/ssh-deploy@main
         env:
           SOURCE: 'dist/'
           REMOTE_HOST: 114.116.77.31
           REMOTE_USER: root
-          SSH_PRIVATE_KEY: XCX960328!
+          SSH_PRIVATE_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
           DEVTOOLS_API_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
           TARGET: /home/server
 #      - name: Publish
