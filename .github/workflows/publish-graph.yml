@@ -48,6 +48,7 @@ jobs:
           SSH_PRIVATE_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
           DEVTOOLS_API_KEY: 29b70d82-0cf8-45fa-bc5d-81fd6dcba3aa
           TARGET: /home/server
+          REMOTE_PORT: 22 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
 #      - name: Publish
 #        run: PUBLISH_GRAPH=true pnpm run start
 #        env:
