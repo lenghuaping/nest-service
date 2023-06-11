@@ -42,12 +42,17 @@ jobs:
       - name: Publish
         uses: easingthemes/ssh-deploy@main
         env:
+          # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
           SOURCE: 'dist/'
-          REMOTE_HOST: 114.116.77.31
-          REMOTE_USER: root
-          SSH_PRIVATE_KEY: 3e404080-c61a-4c73-978c-0f51b1accfed
-          TARGET: /home/server
-          REMOTE_PORT: 22 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
+          # ssh 私钥
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          # 主机，比如 127.0.0.1
+          REMOTE_HOST: ${{ secrets.HW_REMOTE_HOST }}
+          # 登录名，比如 root
+          REMOTE_USER: ${{ secrets.HW_REMOTE_USER }}
+          # 部署目标路径（相对于服务器） 比如 /data
+          TARGET: ${{ secrets.HW_REMOTE_TARGET }}
 #      - name: Publish
 #        run: PUBLISH_GRAPH=true pnpm run start
 #        env:
